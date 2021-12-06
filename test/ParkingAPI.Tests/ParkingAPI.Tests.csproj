@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.1.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0-preview-20211130-02" />
+    <PackageReference Include="xunit" Version="2.4.2-pre.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ParkingAPI\Parking.API.csproj" />
+  </ItemGroup>
+
+</Project>
