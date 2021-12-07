@@ -12,7 +12,7 @@ using Xunit;
 
 namespace ParkingAPI.Tests
 {
-    public class Tests
+    public class ParkingControllerTests
     {
         private Mock<ILogger<ParkingController>> _loggerMock;
         private IParkingLotRepository _repoMock;
