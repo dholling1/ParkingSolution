@@ -41,8 +41,14 @@ namespace Parking.DataSource
         {
             var lot = await GetParkingLotAsync(id);
 
-            if (count >= lot.MaximumCapacity)
+            if (count > lot.MaximumCapacity)
                 throw new InvalidOperationException("Cannot exceed maximum parking lot capacity!");
+
+            if (count < 0)
+            {
+                // we can "heal" by resetting to 0, but we should never be negative unless racy-race
+                throw new InvalidOperationException("Cannot have a count of less than 0!");
+            }
 
             lot.CurrentCount = count;
 
@@ -121,20 +127,5 @@ namespace Parking.DataSource
             return lot.CurrentCount;
         }
 
-        private async Task HandleCountUpdateMethod(string typeOfUpdate, int newValue)
-        {
-            var saved = false;
-            while (!saved)
-            {
-                try
-                {
-                    await _context.SaveChangesAsync();
-                    saved = true;
-                }
-                catch (DbUpdateConcurrencyException e)
-                {
-                }
-            }
-        }
     }
 }

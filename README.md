@@ -9,11 +9,12 @@ Following the problem statement and followup questions and answers, this is a si
 * This is example code and does not represent full production code or even necessarily "best practices" as some of the implementation is contrived to show validation/error handling, etc.
 
 ## General
-Initial projects created using .Net Core Web and .Net Core Web API templates.  Any tooling is added as NuGet packages and a Nuget Restore should be run for the solution upon cloning the repo.  
+Initial projects created using .Net Core Web and .Net Core Web API templates.  Any tooling is added as NuGet packages and a <mark>dotnet restore</mark> should be run for the solution upon cloning the repo.  
 Nuget packages used:
-XUnit
-Swagger
-System.Net.Http.Json
+* XUnit
+* Swagger
+* EF Core
+* Various others as required by the above
 
 ## Running
 By default this is not "deployment ready" - it is designed to be run from Visual Studio 2019.  The API project is set up to run on port 5001, while the web app runs on port 5000.  The launch settings for viewing the Swagger UI interface is <mark>http://localhost:5001/swagger/index.html</mark>.  The methods are all based from <mark>http://localhost:5001/api/Parking</mark>.  

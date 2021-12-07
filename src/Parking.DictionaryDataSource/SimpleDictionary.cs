@@ -38,8 +38,14 @@ namespace Parking.DataSource
         {
             if (_parkingLots.ContainsKey(id))
             {
-                if (count >= _parkingLots[id].MaximumCapacity)
+                if (count > _parkingLots[id].MaximumCapacity)
                     throw new InvalidOperationException("Cannot exceed maximum parking lot capacity!");
+
+                if (count < 0)
+                {
+                    // we can "heal" by resetting to 0, but we should never be negative unless racy-race
+                    throw new InvalidOperationException("Cannot have a count of less than 0!");
+                }
 
                 _parkingLots[id].CurrentCount = count;
                 return count;
